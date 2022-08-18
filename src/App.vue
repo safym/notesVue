@@ -1,7 +1,7 @@
 <template>
   <h1>My notes</h1>
-  <AddNewNote />
-  <hr class="border"/>
+  <AddNewNote @addNewNote = "addNewNote"/>
+  <hr />
   <NoteItems v-bind:notes='notes' />
   
 </template>
@@ -24,6 +24,12 @@ export default {
         ]
     }
   },
+  methods: {
+    addNewNote(newNote) {
+      this.notes.unshift(newNote);
+      console.log(this.notes)
+    }
+  },
   name: 'App',
   components: {
     NoteItems,
@@ -41,18 +47,18 @@ export default {
   color: #000000;
   margin-top: 60px;
 }
-.border {
+hr {
   height: 6px;
   border-radius: 10px;
   background-color: rgb(227, 227, 228);
   border: none;
-  margin: 1%;
+  margin: 10px;
 }
 h1 {
   font-size: 50px;
   margin: 0;
   color:#000000;
   text-decoration: underline;
-  margin-bottom: 1%;
+  margin-bottom: 20px;
 }
 </style>

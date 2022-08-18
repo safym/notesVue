@@ -14,6 +14,7 @@ export default {
 
 <style>
 .note {
+  overflow-wrap: break-word;
   max-width: 300px;
   max-height: auto;
   padding: 15px;
