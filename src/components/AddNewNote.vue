@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="onSubmit" class="addNewNote">
-    <input type="text" placeholder="title here..." v-model="title">
-    <textarea rows=5 type="text" placeholder="text here..." v-model="text"></textarea>
+    <input class="newNoteText" type="text" placeholder="title here..." v-model="title">
+    <textarea class="newNoteTitle" rows=5 type="text" placeholder="text here..." v-model="text"></textarea>
     <button type="submit" class="btnAddNote">Add</button>
   </form>
 </template>
@@ -44,26 +44,26 @@ export default {
   align-items: center;
 }
 
-input,
-textarea {
+.newNoteText,
+.newNoteTitle {
   width: 90%;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-input,
-textarea {
+.newNoteText,
+.newNoteTitle {
   font-family: 'Courier New', monospace;
-  color: #333;
+  color: black;
   font-size: 20px;
   padding: 10px;
   border-radius: 5px;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid lightgrey;
+  background-color: white;
+  border: 2px solid black;
   width: 90%;
   display: block;
   transition: all 0.3s;
 }
-textarea {
+.newNoteTitle {
   resize: none;
 }
 .btnAddNote {
@@ -78,7 +78,7 @@ textarea {
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
-  margin: 0;
+  margin-top: 20px;
   outline: none;
   padding: 13px 23px;
   position: relative;

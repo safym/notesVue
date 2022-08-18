@@ -44,15 +44,15 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #000000;
+  color: black;
   margin-top: 60px;
 }
 hr {
-  height: 6px;
+  height: 1px;
   border-radius: 10px;
-  background-color: rgb(227, 227, 228);
+  background-color: black;
   border: none;
-  margin: 10px;
+  margin: 25px;
 }
 h1 {
   font-size: 50px;
