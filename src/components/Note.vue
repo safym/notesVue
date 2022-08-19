@@ -1,22 +1,18 @@
 <template>
   <div class="note">
     <div class="noteControls">
-      
       <label class="btnCheckbox">
         <input class="checkboxEdit" name="edit" type="checkbox" v-model="edit" v-bind:true-value="on" v-bind:false-value="off"/>
         <span>&hellip;</span>
       </label>
-
-      <!-- <button class="btnNote" id="btnEdit">&hellip;</button>
-      <button class="btnNote" id="btnDelete">&times;</button> -->
+      <button v-on:click="$emit('deleteNote', note.id)" class="btnNote" id="btnDelete">&times;</button>
     </div>
     
-    <h2 v-if="edit===off">{{note.title}}</h2>
-    <textarea v-else class="noteTitle" v-model="note.title" @input="resize"></textarea>
-    <p v-if="edit===off">{{note.text}}</p>
-    <textarea v-else class="noteText" v-model="note.text" @input="resize"></textarea>
+    <h2 class="noteTitle" v-if="edit===off">{{note.title}}</h2>
+    <textarea v-else class="noteTitleEdit" v-model="note.title" ></textarea>
+    <p class="noteText" v-if="edit===off">{{note.text}}</p>
+    <textarea v-else class="noteTextEdit" v-model="note.text" ></textarea>
 
-    <!-- <ResizeAuto v-bind:note="note"/> -->
   </div>
 </template>
 
@@ -32,27 +28,6 @@ export default {
   props: ['note'],
   name: 'Note',
   components: {
-
-  },
-  methods: {
-    resize(event) {
-      event.target.style.height = "auto";
-      event.target.style.height = `${event.target.scrollHeight}px`;
-    },
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.$el.setAttribute(
-        "style",
-        "height",
-        `${this.$el.scrollHeight}px`
-      );
-    });
-  },
-  render() {
-    return this.$scopedSlots.default({
-      resize: this.resize
-    });
   }
 }
 </script>
@@ -68,54 +43,54 @@ export default {
 .btnCheckbox input {
   z-index: -1;
 	opacity: 0;
-	display: block;
 	width: 0;
 	height: 0;
 }
 
-.btnCheckbox span {
+.btnCheckbox span,
+.btnNote {
   display: inline-block;
   font-size: 20px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   background-color: white;
-  border: 1px solid rgb(56, 56, 56);
-  margin-left: 10px;
+  border: none;
+  outline: 1px solid black;
+  margin: 0px;
+  padding: 0;
 }
-/* .noteControls{
+
+.noteControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: auto;
   width: 80px;
-} */
-.btnNote{
-  font-size: 15px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: white;
-  border: 1px solid rgb(56, 56, 56);
-  margin-left: 10px;
 }
+
 .note {
   overflow-wrap: break-word;
+  min-width: 300px;
   max-width: 300px;
   max-height: auto;
   padding: 15px;
   margin: 10px;
   border-radius: 10px;;
-  /* box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 3px, rgba(0, 0, 0, 0.12) 0px 1px 2px;  */
-  border: 2px solid rgb(0, 0, 0, 0.10);
+  border: 1px solid black;
 }
-.note:hover {
-  box-shadow: rgba(0, 0, 0, 0.10) 0px 1px 3px, rgba(0, 0, 0, 0.20) 0px 1px 2px; 
-}
-.noteTitle,
+
 .noteText {
-background-color: #FFFFFF;
-  border: 1px solid #222222;
+  text-align: left;;
+}
+
+.noteTitleEdit,
+.noteTextEdit {
+background-color: white;
+  border: 1px solid black;
   border-radius: 8px;
   box-sizing: border-box;
-  color: #222222;
+  color: black;
   cursor: pointer;
   display: inline-block;
   font-size: 16px;
@@ -129,5 +104,11 @@ background-color: #FFFFFF;
   text-decoration: none;
   transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
   resize: none;
+}
+.noteTitleEdit {
+  height: 20%;
+}
+.noteTextEdit {
+  height: 45%;
 }
 </style>

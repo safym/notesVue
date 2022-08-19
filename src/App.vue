@@ -2,7 +2,7 @@
   <h1>My notes</h1>
   <AddNewNote @addNewNote = "addNewNote"/>
   <hr />
-  <NoteItems v-bind:notes='notes' />
+  <NoteItems v-bind:notes='notes'  @deleteNote="deleteNote"/>
   
 </template>
 
@@ -27,7 +27,9 @@ export default {
   methods: {
     addNewNote(newNote) {
       this.notes.unshift(newNote);
-      console.log(this.notes)
+    },
+    deleteNote(id) {
+      this.notes = this.notes.filter(note => note.id !== id)
     }
   },
   name: 'App',

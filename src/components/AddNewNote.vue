@@ -14,14 +14,14 @@ export default {
       text: ''
     }
   },
-   methods: {
+  methods: {
     onSubmit() {
       if (this.title.trim() && this.text.trim()){
         console.log("submit");
         console.log(this.title);
         console.log(this.text);
         const newNote = {
-          id: 10, 
+          id: Date.now(), 
           title: this.title, 
           text: this.text
         }
@@ -30,7 +30,6 @@ export default {
 
         this.title = this.text = '';
       }
-
     }
   }
 }
@@ -58,7 +57,7 @@ export default {
   padding: 10px;
   border-radius: 5px;
   background-color: white;
-  border: 2px solid black;
+  border: 1px solid black;
   width: 90%;
   display: block;
   transition: all 0.3s;
