@@ -29,6 +29,6 @@ export default {
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 1%;
+  padding: 1%;
 }
 </style>

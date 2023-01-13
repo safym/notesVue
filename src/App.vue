@@ -1,7 +1,10 @@
 <template>
-  <h1>My notes</h1>
-  <AddNewNote @addNewNote = "addNewNote"/>
-  <hr />
+
+  <div class="header">
+    <h1>My notes</h1>
+    <AddNewNote @addNewNote = "addNewNote"/>
+  </div>
+
   <NoteItems v-bind:notes='notes'  @deleteNote="deleteNote"/>
   
 </template>
@@ -41,26 +44,51 @@ export default {
 </script>
 
 <style>
+:root {
+  --main-orange-color: #FFD8BE;
+  --second-orange-color: #fff2e4;
+  --third-orange-color: #fff9f3;
+
+  --main-purple-color: #b0a2ff;
+  --second-purple-color: #c9c0ff;
+  --third-purple-color: #e4dfff;
+
+  --shadow-color: #24005e38;
+  /* --third-purple-orange: #fff9f3; */
+
+  --background-color: #F8F7FF;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto Flex', sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+}
+
 #app {
-  font-family: Courier New, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+
   color: black;
-  margin-top: 60px;
+  background-color: var(--third-orange-color);
 }
-hr {
-  height: 1px;
-  border-radius: 10px;
-  background-color: black;
-  border: none;
-  margin: 25px;
+
+.header {
+  padding: 20px;
+  background-color: var(--main-purple-color);
+  border-radius: 0 0px 20px 20px;
+  box-shadow: var(--shadow-color) 0px 13px 27px -5px,  var(--shadow-color) 0px 8px 16px -8px;
 }
+
 h1 {
   font-size: 50px;
   margin: 0;
   color:#000000;
-  text-decoration: underline;
   margin-bottom: 20px;
 }
 </style>

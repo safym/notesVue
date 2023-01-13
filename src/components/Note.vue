@@ -32,7 +32,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+button,
+textarea {
+  border: none;
+  outline: none;
+}
+
 .btnCheckbox{
   display: inline-block;
 	margin: 0 5px 0 0;
@@ -54,11 +61,15 @@ export default {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: white;
-  border: none;
-  outline: 1px solid black;
+  background-color: var(--second-orange-color);
   margin: 0px;
   padding: 0;
+}
+
+.btnCheckbox span:hover,
+.btnNote:hover,
+.btnCheckbox span:enabled {
+  background-color: var(--main-orange-color);
 }
 
 .noteControls {
@@ -76,8 +87,9 @@ export default {
   max-height: auto;
   padding: 15px;
   margin: 10px;
-  border-radius: 10px;;
-  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: var(--shadow-color) 0px 13px 27px -5px,  var(--shadow-color) 0px 8px 16px -8px;
+  background-color: white;  
 }
 
 .noteText {
@@ -86,8 +98,7 @@ export default {
 
 .noteTitleEdit,
 .noteTextEdit {
-background-color: white;
-  border: 1px solid black;
+  box-shadow: var(--second-orange-color) 0px 0px 0px 3px;
   border-radius: 8px;
   box-sizing: border-box;
   color: black;
@@ -97,7 +108,6 @@ background-color: white;
   font-weight: 600;
   line-height: 20px;
   margin-top: 20px;
-  outline: none;
   padding: 13px 23px;
   position: relative;
   text-align: center;

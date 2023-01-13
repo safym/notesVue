@@ -2,7 +2,7 @@
   <form @submit.prevent="onSubmit" class="addNewNote">
     <input class="newNoteText" type="text" placeholder="title here..." v-model="title">
     <textarea class="newNoteTitle" rows=5 type="text" placeholder="text here..." v-model="text"></textarea>
-    <button type="submit" class="btnAddNote">Add</button>
+    <button type="submit" class="btnAddNote">Add note</button>
   </form>
 </template>
 
@@ -36,7 +36,16 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+
+input,
+textarea,
+button {
+  margin: 0;
+  border: none;
+  outline: none;
+}
+
 .addNewNote {
   display: flex;
   flex-direction: column;
@@ -45,35 +54,40 @@ export default {
 
 .newNoteText,
 .newNoteTitle {
-  width: 90%;
-  margin-top: 10px;
+  width: 50%;
 }
 
 .newNoteText,
 .newNoteTitle {
-  font-family: 'Courier New', monospace;
-  color: black;
-  font-size: 20px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: white;
-  border: 1px solid black;
-  width: 90%;
   display: block;
+
+  margin-top: 10px;
+  padding: 10px;
+  
+  font-size: 20px;
+
+  color: black;
+  background-color: var(--second-purple-color);
+  border-radius: 5px;
+
   transition: all 0.3s;
+}
+
+.newNoteText:focus,
+.newNoteTitle:focus {
+  background-color: var(--third-purple-color);
 }
 .newNoteTitle {
   resize: none;
 }
 .btnAddNote {
-  width: 50%;
-  background-color: #FFFFFF;
-  border: 1px solid #222222;
+  width: 15%;
+  background: none;
+  background-color: white;
   border-radius: 8px;
-  box-sizing: border-box;
-  color: #222222;
+ 
+  color: #37205f;
   cursor: pointer;
-  display: inline-block;
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
@@ -89,5 +103,14 @@ export default {
   background-color: #F7F7F7;
   border-color: #000000;
   transform: scale(.96);
+}
+
+@media screen and (max-width: 1200px) {
+  .newNoteText,
+  .newNoteTitle,
+  .btnAddNote {
+    width: 100%;
+  }
+
 }
 </style>
